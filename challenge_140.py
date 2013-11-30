@@ -17,6 +17,7 @@ def handle_camel(var):
 def handle_snake_caps(var):
     return '_'.join(map(str.upper, var))
 
+
 def convert_notation(notation, name):
     return conversion_rules[notation](name)
 
@@ -25,9 +26,10 @@ conversion_rules = { camel_case : handle_camel,
                      snake_case : '_'.join,
                      snake_caps : handle_snake_caps, }
 
+
 def main():
     notation = input()
-    name = input()
+    name = re.split(spaced_var, input())
     print(convert_notation(notation, name))
 
 
