@@ -23,13 +23,6 @@ getLifespan (pres:bday:bloc:dday:dloc:[]) = do
     last4 ss = drop (length ss - 4) ss
 getLifespan _ = Nothing
 
-bothAlive :: Lifespan -> Lifespan -> Bool
-bothAlive (b1, d1) (b2, d2) = case (d1, d2) of
-  (Just d1', Just d2') -> max b1 b2 <= min d1' d2'
-  (Just d1', Nothing)  -> max b1 b2 <= d1'
-  (Nothing, Just d2')  -> bothAlive (b2, d2) (b1, d1)
-  (Nothing, Nothing)   -> True
-
 lifespanToRange :: Lifespan -> [Int]
 lifespanToRange (a1, Nothing) = [a1..2016]
 lifespanToRange (a1, Just a2) = [a1..a2]
